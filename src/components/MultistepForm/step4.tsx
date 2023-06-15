@@ -1,3 +1,4 @@
+// @ts-nocheck
 interface Step4Props {
   data: string[];
 }

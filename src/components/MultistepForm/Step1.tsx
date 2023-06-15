@@ -14,7 +14,6 @@ function Step1({ firstName, lastName, updateFields }: Step1Props) {
     updateFields({ [inputName]: value });
   };
 
-
   return (
     <div className="my-16">
       <InputComponent

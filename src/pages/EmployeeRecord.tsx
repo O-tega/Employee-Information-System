@@ -15,20 +15,6 @@ interface FormData {
   checked: boolean;
 }
 
-const FORM_DATA: FormData[] = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    role: "Frontend Developer",
-    email: "john.doe@example.com",
-    location: "New York",
-    salary: "$100,000",
-    bestQuotes: "Stay hungry, stay foolish",
-    checked: false,
-  },
-  // Add more objects as needed
-];
-
 function Table() {
   const navigate = useNavigate();
   const [records, setRecords] = useState<FormData[]>([]);

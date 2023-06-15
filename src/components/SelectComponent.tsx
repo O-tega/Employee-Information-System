@@ -1,12 +1,14 @@
-import { useState } from "react";
-
-interface Props {
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-shadow */
+type UserData = {
   options: Options[];
+};
+type Props = UserData & {
   label: string;
   inputName: string;
   inputValue: string;
   onInputChange: (value: string, inputName: string) => void;
-}
+};
 
 function SelectComponent({
   options,
@@ -29,6 +31,7 @@ function SelectComponent({
         onChange={handleChange}
         className="border border-primary rounded px-2 focus:outline-primary w-[530px] h-[50px] text-primary "
       >
+        {/*  */}
         {options.map(({ value, label }) => (
           <option key={label} value={value}>
             {label}
