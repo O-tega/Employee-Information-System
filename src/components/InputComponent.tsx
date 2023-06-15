@@ -34,7 +34,7 @@ export function TextareaComponent({
   onInputChange,
   label,
 }: Props) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
     onInputChange(value, inputName);
   };
@@ -42,10 +42,9 @@ export function TextareaComponent({
     <div className="my-5">
       <p className="text-primary font-semibold my-2">{label}</p>
       <textarea
-        type="text"
         name={inputName}
         value={inputValue}
-        className="border border-primary rounded px-5 focus:outline-primary w-[530px] h-[124px] "
+        className="border border-primary rounded px-1 focus:outline-primary w-[530px] h-[124px] "
         onChange={handleChange}
       />
     </div>

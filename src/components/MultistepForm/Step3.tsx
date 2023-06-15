@@ -1,43 +1,33 @@
-import { useState } from "react";
 import { InputComponent, TextareaComponent } from "../InputComponent";
 
-interface FormData {
+type UserData = {
   bestQuotes: string;
   salary: string;
-}
+};
+type Step3Props = UserData & {
+  updateFields: (fields: Partial<FormData>) => void;
+};
 
-function Step3() {
-  const [formData, setFormData] = useState<FormData>({
-    bestQuotes: "",
-    salary: "",
-  });
-
+function Step3({ bestQuotes, salary, updateFields }: Step3Props) {
   const handleChange = (value: string, inputName: string) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [inputName]: value,
-    }));
+    updateFields({ [inputName]: value });
   };
-  console.log(formData);
 
   return (
-    <form>
-      <div className="my-5">
-        <TextareaComponent
-          label="Best Quotes"
-          inputName="bestQuotes"
-          inputValue={formData.bestQuotes}
-          className="border border-primary rounded px-5 focus:outline-primary w-[530px] h-[124px] "
-          onInputChange={handleChange}
-        />
-      </div>
+    <div>
+      <TextareaComponent
+        label="Best Quotes"
+        inputName="bestQuotes"
+        inputValue={bestQuotes}
+        onInputChange={handleChange}
+      />
       <InputComponent
         label="Salary Range"
         inputName="salary"
-        inputValue={formData.salary}
+        inputValue={salary}
         onInputChange={handleChange}
       />
-    </form>
+    </div>
   );
 }
 

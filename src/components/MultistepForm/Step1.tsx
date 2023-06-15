@@ -1,46 +1,35 @@
-import { useState } from "react";
 import { InputComponent } from "../InputComponent";
 
-interface FormData {
+type UserData = {
   firstName: string;
   lastName: string;
-}
+};
 
-function Step1() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-  });
+type Step1Props = UserData & {
+  updateFields: (fields: Partial<FormData>) => void;
+};
 
+function Step1({ firstName, lastName, updateFields }: Step1Props) {
   const handleChange = (value: string, inputName: string) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [inputName]: value,
-    }));
+    updateFields({ [inputName]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formData);
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="my-16">
-        <InputComponent
-          label="First Name"
-          inputName="firstName"
-          inputValue={formData.firstName}
-          onInputChange={handleChange}
-        />
-        <InputComponent
-          label="Last Name"
-          inputName="lastName"
-          inputValue={formData.lastName}
-          onInputChange={handleChange}
-        />
-      </div>
-    </form>
+    <div className="my-16">
+      <InputComponent
+        label="First Name"
+        inputName="firstName"
+        inputValue={firstName}
+        onInputChange={handleChange}
+      />
+      <InputComponent
+        label="Last Name"
+        inputName="lastName"
+        inputValue={lastName}
+        onInputChange={handleChange}
+      />
+    </div>
   );
 }
 

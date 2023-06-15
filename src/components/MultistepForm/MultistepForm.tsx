@@ -25,6 +25,8 @@ function MultistepForm(steps: ReactElement[]) {
     currentStepIndex,
     step: steps[currentStepIndex],
     isFirstStep: currentStepIndex === 0,
+    isLastStep: currentStepIndex === steps.length - 1,
+    isBeforeLast: currentStepIndex === steps.length - 2,
     steps,
     goTo,
     next,

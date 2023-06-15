@@ -3,15 +3,17 @@ import { arrowForward, arrowBack } from "ionicons/icons";
 
 interface Props {
   label: string;
-  handleClick(e: React.MouseEvent<HTMLButtonElement>): void;
+  // handleClick(e: React.MouseEvent<HTMLButtonElement>): void;
+}
+interface BackProps {
+  setClick(e: React.MouseEvent<HTMLButtonElement>): void;
 }
 
-export function ForwardButtonComponent({ label, handleClick }: Props) {
+export function ForwardButtonComponent({ label }: Props) {
   return (
     <div>
       <button
         type="submit"
-        onClick={handleClick}
         className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md absolute top-16 right-0 "
       >
         {label} <IonIcon icon={arrowForward} />
@@ -19,15 +21,19 @@ export function ForwardButtonComponent({ label, handleClick }: Props) {
     </div>
   );
 }
-export function BackButtonComponent({ label, handleClick }: Props) {
+export function BackButtonComponent({ setClick }: BackProps) {
   return (
     <div>
       <button
-        type="submit"
-        onClick={handleClick}
-        className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md absolute top-16 left-0 "
+        type="button"
+        onClick={setClick}
+        className="cursor-pointer text-white font-bold items-center justify-center   flex h-[48px]  absolute top-16 left-0 "
       >
-        <IonIcon icon={arrowBack} /> {label}
+        <IonIcon
+          className="text-slate-200 hover:text-primary"
+          icon={arrowBack}
+          size="40"
+        />
       </button>
     </div>
   );
