@@ -5,3 +5,28 @@
 @tailwind utilities;
 
 
+@layer components{
+    .background{
+    @apply bg-[#F3B5A1] h-screen 
+    }
+    .ct{
+    @apply flex justify-center}
+    .head{
+    @apply font-bold
+    }
+    .tr{
+        @apply md:pl-10 2xl:pl-32
+    }
+    .salary{
+     @apply text-red-500
+    }
+    .Name{
+        @apply text-primary font-extrabold
+    }
+    .email{
+    @apply font-semibold
+    }
+}
+
+
+
