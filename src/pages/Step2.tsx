@@ -1,5 +1,5 @@
-import SelectComponent from "../SelectComponent";
-import { InputComponent } from "../InputComponent";
+import SelectComponent from "../components/SelectComponent";
+import { InputComponent } from "../components/InputComponent";
 
 type UserData = {
   role: string;
