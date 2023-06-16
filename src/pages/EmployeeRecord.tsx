@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { IonIcon } from "@ionic/react";
 import { arrowForward } from "ionicons/icons";
-import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 interface FormData {
@@ -14,12 +13,13 @@ interface FormData {
   bestQuotes: string;
   checked: boolean;
 }
+interface Props {
+  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+}
 
-function Table() {
-  const navigate = useNavigate();
+function Table({ handleClick }: Props) {
   const [records, setRecords] = useState<FormData[]>([]);
-
-  console.log(records);
+  //   const [currentStep, setCurrentStep] = useState<number>();
 
   useEffect(() => {
     const storedData = localStorage.getItem("storedData");
@@ -58,7 +58,7 @@ function Table() {
             </h2>
             <button
               type="submit"
-              onClick={() => navigate("/form")}
+              onClick={handleClick}
               className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create New <IonIcon icon={arrowForward} />
@@ -125,7 +125,7 @@ function Table() {
           </h2>
           <button
             type="submit"
-            onClick={() => navigate("/form")}
+            onClick={handleClick}
             className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
           >
             Create New <IonIcon icon={arrowForward} />
@@ -138,7 +138,7 @@ function Table() {
             </p>
             <button
               type="submit"
-              onClick={() => navigate("/form")}
+              onClick={() => handleClick}
               className="bg-primary w-[160px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create Profile <IonIcon icon={arrowForward} />
