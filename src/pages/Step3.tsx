@@ -1,4 +1,7 @@
-import { InputComponent, TextareaComponent } from "../InputComponent";
+import {
+  InputComponent,
+  TextareaComponent,
+} from "../components/InputComponent";
 
 type UserData = {
   bestQuotes: string;

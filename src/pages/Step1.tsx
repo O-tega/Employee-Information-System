@@ -1,4 +1,4 @@
-import { InputComponent } from "../InputComponent";
+import { InputComponent } from "../components/InputComponent";
 
 type UserData = {
   firstName: string;

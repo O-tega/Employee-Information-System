@@ -1,4 +1,3 @@
-// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-shadow */
 type UserData = {
   options: Options[];
@@ -31,7 +30,6 @@ function SelectComponent({
         onChange={handleChange}
         className="border border-primary rounded px-2 focus:outline-primary w-[530px] h-[50px] text-primary "
       >
-        {/*  */}
         {options.map(({ value, label }) => (
           <option key={label} value={value}>
             {label}
