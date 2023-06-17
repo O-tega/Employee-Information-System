@@ -46,7 +46,10 @@ function Card() {
 
   useEffect(() => {
     // Save data to local storage whenever the storedData state changes
-    localStorage.setItem("storedData", JSON.stringify(storedData));
+    if (storedData.length !== 0) {
+      localStorage.setItem("storedData", JSON.stringify(storedData));
+      console.log(storedData)
+    }
   }, [storedData]);
 
   function updateFields(fields: Partial<FormData>) {
@@ -77,6 +80,7 @@ function Card() {
     if (!isBeforeLast) {
       next();
     } else {
+
       setStoredData((prevData) => [...prevData, data]);
       setData(FORM_DATA); // Reset form data after submitting
       setTimeout(() => {
