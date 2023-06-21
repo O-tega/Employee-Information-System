@@ -1,49 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { IonIcon } from "@ionic/react";
 import { arrowForward } from "ionicons/icons";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import { EmployeeContext } from "../EmployeeRecordList";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  role: string;
-  email: string;
-  location: string;
-  salary: string;
-  bestQuotes: string;
-  checked: boolean;
-}
-interface Props {
-  handleClick: React.MouseEventHandler<HTMLButtonElement>;
-}
+// interface FormData {
+//   firstName: string;
+//   lastName: string;
+//   role: string;
+//   email: string;
+//   location: string;
+//   salary: string;
+//   bestQuotes: string;
+//   checked: boolean;
+// }
+// interface Props {
+//   handleClick: React.MouseEventHandler<HTMLButtonElement>;
+// }
 
-function Table({ handleClick }: Props) {
-  const [records, setRecords] = useState<FormData[]>([]);
+function Table() {
+  const navigate = useNavigate();
+
+  const { records, handleCheckboxChange, handleDelete }: EmployeeContextType =
+    useContext(EmployeeContext);
+  // const [records, setRecords] = useState<FormData[]>([]);
   //   const [currentStep, setCurrentStep] = useState<number>();
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("storedData");
-    if (storedData) {
-      setRecords(JSON.parse(storedData));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedData = localStorage.getItem("storedData");
+  //   if (storedData) {
+  //     setRecords(JSON.parse(storedData));
+  //   }
+  // }, []);
 
-  function handleDeleteChecked() {
-    const updatedRecords = records.filter((record) => !record.checked);
-    setRecords(updatedRecords);
-    localStorage.setItem("storedData", JSON.stringify(updatedRecords));
-  }
+  // function handleDeleteChecked() {
+  //   const updatedRecords = records.filter((record) => !record.checked);
+  //   setRecords(updatedRecords);
+  //   localStorage.setItem("storedData", JSON.stringify(updatedRecords));
+  // }
 
-  function handleCheckboxChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-    email: string
-  ) {
-    const { checked } = event.target;
-    const updatedRecords = records.map((record) =>
-      record.email === email ? { ...record, checked } : record
-    );
-    setRecords(updatedRecords);
-  }
+  // function handleCheckboxChange(
+  //   event: React.ChangeEvent<HTMLInputElement>,
+  //   email: string
+  // ) {
+  //   const { checked } = event.target;
+  //   const updatedRecords = records.map((record) =>
+  //     record.email === email ? { ...record, checked } : record
+  //   );
+  //   setRecords(updatedRecords);
+  // }
 
   if (records.length !== 0) {
     return (
@@ -58,7 +64,7 @@ function Table({ handleClick }: Props) {
             </h2>
             <button
               type="submit"
-              onClick={handleClick}
+              // onClick={}
               className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create New <IonIcon icon={arrowForward} />
@@ -67,7 +73,7 @@ function Table({ handleClick }: Props) {
           <div className="flex justify-end mr-40 mb-10">
             <button
               type="submit"
-              onClick={handleDeleteChecked}
+              onClick={handleDelete}
               className="bg-[#000000] bg-opacity-20 w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-opacity-30  flex h-[48px] rounded-md"
             >
               Delete
@@ -125,7 +131,7 @@ function Table({ handleClick }: Props) {
           </h2>
           <button
             type="submit"
-            onClick={handleClick}
+            // onClick={handleClick}
             className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
           >
             Create New <IonIcon icon={arrowForward} />
@@ -138,7 +144,7 @@ function Table({ handleClick }: Props) {
             </p>
             <button
               type="submit"
-              onClick={() => handleClick}
+              // onClick={() => handleClick}
               className="bg-primary w-[160px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create Profile <IonIcon icon={arrowForward} />
