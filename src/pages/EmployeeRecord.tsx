@@ -5,51 +5,11 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { EmployeeContext } from "../EmployeeRecordList";
 
-// interface FormData {
-//   firstName: string;
-//   lastName: string;
-//   role: string;
-//   email: string;
-//   location: string;
-//   salary: string;
-//   bestQuotes: string;
-//   checked: boolean;
-// }
-// interface Props {
-//   handleClick: React.MouseEventHandler<HTMLButtonElement>;
-// }
-
 function Table() {
   const navigate = useNavigate();
 
   const { records, handleCheckboxChange, handleDelete }: EmployeeContextType =
     useContext(EmployeeContext);
-  // const [records, setRecords] = useState<FormData[]>([]);
-  //   const [currentStep, setCurrentStep] = useState<number>();
-
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("storedData");
-  //   if (storedData) {
-  //     setRecords(JSON.parse(storedData));
-  //   }
-  // }, []);
-
-  // function handleDeleteChecked() {
-  //   const updatedRecords = records.filter((record) => !record.checked);
-  //   setRecords(updatedRecords);
-  //   localStorage.setItem("storedData", JSON.stringify(updatedRecords));
-  // }
-
-  // function handleCheckboxChange(
-  //   event: React.ChangeEvent<HTMLInputElement>,
-  //   email: string
-  // ) {
-  //   const { checked } = event.target;
-  //   const updatedRecords = records.map((record) =>
-  //     record.email === email ? { ...record, checked } : record
-  //   );
-  //   setRecords(updatedRecords);
-  // }
 
   if (records.length !== 0) {
     return (
@@ -64,7 +24,7 @@ function Table() {
             </h2>
             <button
               type="submit"
-              // onClick={}
+              onClick={() => navigate("/form")}
               className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create New <IonIcon icon={arrowForward} />
@@ -131,7 +91,7 @@ function Table() {
           </h2>
           <button
             type="submit"
-            // onClick={handleClick}
+            onClick={() => navigate("/form")}
             className="bg-primary w-[138px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
           >
             Create New <IonIcon icon={arrowForward} />
@@ -144,7 +104,7 @@ function Table() {
             </p>
             <button
               type="submit"
-              // onClick={() => handleClick}
+              onClick={() => navigate("/form")}
               className="bg-primary w-[160px] cursor-pointer text-white font-bold items-center justify-center hover:bg-primaryDark  flex h-[48px] rounded-md  "
             >
               Create Profile <IonIcon icon={arrowForward} />

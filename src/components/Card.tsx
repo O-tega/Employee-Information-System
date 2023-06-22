@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/jsx-key */
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import MultistepForm from "./MultistepForm/MultistepForm";
 import { ForwardButtonComponent, BackButtonComponent } from "./ButtonComponent";
@@ -9,7 +10,7 @@ import Step1 from "../pages/Step1";
 import Step2 from "../pages/Step2";
 import Step3 from "../pages/Step3";
 import Step4 from "../pages/step4";
-import EmployeeRecordProvider from "../EmployeeRecordList";
+import { EmployeeContext } from "../EmployeeRecordList";
 
 interface FormData {
   firstName: string;
@@ -32,7 +33,8 @@ const FORM_DATA = {
 };
 
 function Card() {
-  // const { addData } = useContext(EmployeeRecordProvider);
+  const navigate = useNavigate();
+  const { addData } = useContext(EmployeeContext);
   const [data, setData] = useState(FORM_DATA);
 
   function updateFields(fields: Partial<FormData>) {
@@ -57,7 +59,7 @@ function Card() {
       addData(data);
       setData(FORM_DATA); // Reset form data after submitting
       setTimeout(() => {
-        next();
+        navigate("/");
       }, 2000);
     }
   }
@@ -72,7 +74,7 @@ function Card() {
             Kindly Complete your profile
           </p>
           <div className="border rounded-lg bg-white w-[712px] h-[494px] flex justify-center ">
-            <form>
+            <form onSubmit={handleSubmit}>
               <p>{step}</p>
               {!isFirstStep && (
                 <div className="flex justify-end relative">

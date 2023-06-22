@@ -65,7 +65,7 @@ function EmployeeRecordProvider({ children }: Props) {
   }, [records]);
 
   const addData = useCallback(
-    ({ data }: InData) => {
+    (data) => {
       setRecords(() => [...records, data]);
     },
     [records]
